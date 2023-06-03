@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M04</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://kit.fontawesome.com/ff1a8ed489.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    
+    <!-- <div class="hey"> -->
+        <nav class="content">
+            <i class="fa-solid fa-bars fa-2x" style="color: #ffffff;">Me-n-u</i>
+           
+            <ul>
+                <!-- <li><a href="">About</a></li>
+                <li><a href=""></a></li> -->
+                <i class="fa-solid fa-house fa-3x" style="color: #ffffff;"></i>
+                <br>
+                <li>Home is You</li>
+            </ul>
+        </nav>
+    
+                   
+            
+        <div class="music-player">
+            <nav>
+                <div class="circle">
+                   <i class="fa-solid fa-angle-left" style="color: #000000;"></i>
+                </div>
+                <div class="circle">
+                    <i class="fa-solid fa-bars" style="color: #000000;"></i>
+                </div>
+            </nav>
+
+            <img src="files/Chansoo.jpg" class="song-img">
+            <h1>I Really Like You</h1>
+            
+            <audio id="song">
+              <source src="files/I Really Like You-Reon.mp3" type="audio/mpeg">
+            </audio>
+            <input type="range" value="0" id="progress">
+
+            <div class="controls">
+                <div><i class="fa-solid fa-backward" style="color: #000000;"></i></div>
+                <div onclick="playPause()"><i class="fa-solid fa-play" style="color: #000000;" id="ctrlIcon"></i></div>
+                <div><i class="fa-solid fa-forward" style="color: #000000;"></i></div>
+            </div>
+        </div>
+
+        
+
+        <div class="container">
+            <button onclick="hideShow()" type="button" style="font-size: 15px;">
+            click here for a hidden message!</button>
+        </div>
+        <div>
+            <div class="message">
+                <p class="heading">HAPPY 2 MONTHS OF LOVE</p>
+                <p class="heading">Francis baby I LOVE YOUUU!!!</p>
+                <br>
+                <br>
+                <p id="letter" class="letter"></p>      
+            </div>
+        </div>
+        
+        <div class="box">
+             <h1> Playlist for you
+             <br>
+                <ul>
+                    <br>
+                    <li> <a href="https://open.spotify.com/track/4tQUdIk3MXQHgP2sRNdrJQ?si=e0f012d9fccd4a98">I really like you - Reon</a></li>
+                    <li> <a href="https://open.spotify.com/track/1RMJOxR6GRPsBHL8qeC2ux?si=708d06b9e7d24d5f">Best Part - Daniel Caesar</a></li>
+                    <li> <a href="https://open.spotify.com/track/1fzAuUVbzlhZ1lJAx9PtY6?si=076013a7e5a04542">Day Light - Taylor Swift</a></li>
+                    <li> <a href="https://open.spotify.com/track/7I9RoRcJ0N9rvN4p4KWPsH?si=574e6f0224434e8f">Paraluman - Raven</a></li>
+                    <li> <a href="https://open.spotify.com/track/5LrN7yUQAzvthd4QujgPFr?si=3f1bc499d22d4d7e">Here With Me - d4vd</a></li>
+                    <li> <a href="https://open.spotify.com/track/50x1Ic8CaXkYNvjmxe3WXy?si=00948ac41c7f4fb8">Those Eyes - New West</a></li>
+                    <li> <a href="https://open.spotify.com/track/2eAvDnpXP5W0cVtiI0PUxV?si=ac5f1397613140e8">Dandelions - Ruth B.</a></li>
+                </ul>
+            </h1>
+            
+        </div> 
+        
+    <!-- </div>  -->
+
+<script>
+    let progress = document.getElementById("progress")
+    let song = document.getElementById("song")
+    let ctrlIcon = document.getElementById("ctrlIcon")
+
+    song.onloadedmetadata = function(){
+        progress.max = song.duration
+        progress.value = song.currentTime
+    }
+
+    function playPause(){
+        if(ctrlIcon.classList.contains("fa-pause")){
+            song.pause();
+            ctrlIcon.classList.remove("fa-pause");
+            ctrlIcon.classList.add("fa-play");
+        }
+        else{
+            song.play();
+            ctrlIcon.classList.add("fa-pause");
+            ctrlIcon.classList.remove("fa-play");
+
+        }
+    }
+
+    if(song.play()){
+        setInterval(()=>{
+            progress.value = song.currentTime;
+        },500);
+    }
+    progress.onchange = function(){
+        song.play();
+        song.currentTime = progress.value;
+        ctrlIcon.classList.add("fa-pause");
+        ctrlIcon.classList.remove("fa-play");
+
+    }
+
+    function hideShow(){
+        document.getElementById("letter").innerHTML = "Whenever I'm with you, I feel an overwhelming sense of peace and contentment. Your presense is like a warm embrace. wrapping around my heart and soul, reassuring me that everything will be okay. And you always try to understand me, even when I struggle to express myself. <br><br> My love for you is unweaving. Together, we can face any challenges that come our way. <BR> <br> I am fully committed to you and to our future together. I love you so much, Francis."
+   }
+
+  
+    
+</script>
+
+</body>
+</html>
